@@ -1,6 +1,8 @@
 import sqlite3 as sq
 from create_bot import bot
 
+from aiogram import types
+
 def sql_start():
 	global base, cur
 	base = sq.connect('pizza_cool.db')
@@ -18,7 +20,7 @@ async def sql_add_command(state):
 
 async def sql_read(message):
 	    for ret in cur.execute('SELECT * FROM menu').fetchall():
-        	await bot.send_photo(message.from_user.id, ret[0], f'{ret[1]}\nОписание: {ret[2]}\nЦена {ret[-1]}')
+        	await bot.send_photo(message.from_user.id, ret[0], f'<b>{ret[1]}</b>\n\nОписание:\n{ret[2]}\n\nЦена: {ret[-1]} руб', parse_mode=types.ParseMode.HTML)
 
 async def sql_read2():
 	return cur.execute('SELECT * FROM menu').fetchall()

@@ -18,7 +18,7 @@ async def command_start(message : types.Message):
 # @dp.message_handler(commands=[''])
 async def pizza_open_command(message : types.Message):
     # await message.delete()
-    await bot.send_message(message.from_user.id, '<b>Режим работы:</b>\nВс-Чт с 9:00 до 20:00\nПт-Сб с 10:00 до 23:00', parse_mode=types.ParseMode.HTML)
+    await bot.send_message(message.from_user.id, '<b>Режим работы:</b>\n\nВс-Чт с 9:00 до 20:00\nПт-Сб с 10:00 до 23:00', parse_mode=types.ParseMode.HTML)
     print('Пользователь запросил режим работы')
 
 # @dp.message_handler(commands=['place'])

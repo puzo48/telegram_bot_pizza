@@ -90,9 +90,8 @@ async def delete_item(message: types.Message):
 	if message.from_user.id == ID:
 		read = await sqlite_db.sql_read2()
 		for ret in read:
-			await bot.send_photo(message.from_user.id, ret[0], f'{ret[1]}\nОписание: {ret[2]}\nЦена {ret[-1]}')
-			await bot.send_message(message.from_user.id, text='^^^', reply_markup=InlineKeyboardMarkup().\
-				add(InlineKeyboardButton(f'Удалить {ret[1]}', callback_data=f'del {ret[1]}')))
+			await bot.send_photo(message.from_user.id, ret[0], f'<b>{ret[1]}</b>\n\nОписание:\n{ret[2]}\n\nЦена: {ret[-1]} руб', parse_mode=types.ParseMode.HTML, reply_markup=InlineKeyboardMarkup().\
+				  add(InlineKeyboardButton(f'Удалить {ret[1]}', callback_data=f'del {ret[1]}')))
 
 
 
